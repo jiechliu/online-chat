@@ -1,0 +1,398 @@
+/* 重置一些基础样式 */
+body {
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+}
+
+/* 主布局容器 */
+.chat-layout {
+  height: 100vh;
+  padding: 20px;
+  background: #f0f2f5;
+  display: flex;
+  justify-content: center;
+}
+
+/* 聊天主内容区 */
+.chat-content {
+  width: 800px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
+/* 聊天会话列表侧边栏 */
+.chat-sider {
+  width: 300px !important;
+  max-width: 300px !important;
+  min-width: 300px !important;
+  margin-left: 20px;
+  background: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.06);
+  overflow: hidden;
+}
+
+/* 聊天容器 */
+.chat-container {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+}
+
+/* 聊天头部 */
+.chat-header {
+  padding: 16px 24px;
+  background: #fff;
+  border-bottom: 1px solid #f0f0f0;
+  margin-bottom: 0;
+}
+
+.chat-header h2 {
+  margin: 0;
+  font-size: 16px;
+  color: #333;
+}
+
+/* 消息列表容器 */
+.messages-container {
+  flex: 1;
+  padding: 24px;
+  overflow-y: auto;
+  background: #f5f5f5;
+  margin-bottom: 0;
+  border: none;
+  display: flex;
+  flex-direction: column;
+}
+
+/* 消息输入区域 */
+.message-input-form {
+  padding: 16px 24px;
+  background: #fff;
+  border-top: 1px solid #f0f0f0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+/* 会话列表样式优化 */
+.session-list {
+  height: 100%;
+  overflow-y: auto;
+}
+
+/* 增加样式优先级，覆盖 antd 默认样式 */
+.chat-layout .chat-sider .session-item {
+  padding: 12px 24px;
+  border-bottom: 1px solid #f0f0f0;
+  cursor: pointer;
+  transition: all 0.3s;
+  height: 72px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+/* 增加其他相关样式的优先级 */
+.chat-layout .chat-sider .session-item:hover {
+  background-color: #f5f5f5;
+}
+
+.chat-layout .chat-sider .session-item.active {
+  background-color: #e6f7ff;
+}
+
+.chat-layout .chat-sider .session-avatar {
+  flex-shrink: 0;
+  margin: 4px 4px 4px 0;
+}
+
+.chat-layout .chat-sider .session-content {
+  flex: 1;
+  min-width: 0;
+  padding: 0;
+}
+
+.session-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.session-name {
+  font-size: 16px;
+  font-weight: 400;
+  color: #000000;
+}
+
+.session-time {
+  font-size: 12px;
+  color: #b3b3b3;
+  margin-left: 10px;
+}
+
+.session-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.last-message {
+  font-size: 13px;
+  color: #808080;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 220px;
+}
+
+/* 在线用户列表 */
+.online-users {
+  padding: 8px 0;
+  color: #666;
+  font-size: 13px;
+}
+
+/* 消息气泡优化 */
+.message {
+  margin-bottom: 12px;
+  padding: 12px 16px;
+  border-radius: 12px;
+  background-color: #fff;
+  max-width: 70%;
+  align-self: flex-start;
+}
+
+.own-message {
+  background-color: #9eea6a;
+  align-self: flex-end;
+}
+
+.private-message {
+  background-color: #fff;
+}
+
+.private-message.own-message {
+  background-color: #9eea6a;
+}
+
+.message-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 8px;
+  font-size: 0.8em;
+  color: #666;
+}
+
+.message-header .ant-avatar {
+  width: 24px;
+  height: 24px;
+  font-size: 16px;
+  transition: transform 0.2s;
+}
+
+.message-header .ant-avatar:hover {
+  transform: scale(1.1);
+}
+
+/* 禁用自己和系统消息的头像悬停效果 */
+.own-message .message-header .ant-avatar:hover,
+.system-message .message-header .ant-avatar:hover {
+  transform: none;
+  cursor: default;
+}
+
+.message-header .ant-avatar svg {
+  width: 16px;
+  height: 16px;
+}
+
+.message-content {
+  word-break: break-word;
+  font-size: 14px;
+  line-height: 1.4;
+}
+
+.message-input {
+  flex: 1;
+  min-width: 0;
+  padding: 8px 12px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 40px;
+}
+
+.send-button {
+  min-width: 70px;
+  height: 40px;
+  padding: 0 16px;
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.send-button:hover {
+  background-color: #45a049;
+}
+
+.username {
+  font-weight: bold;
+}
+
+.timestamp {
+  color: #999;
+}
+
+.user-select {
+  width: 150px;
+  margin-right: 10px;
+}
+
+.system-message {
+  background-color: transparent;
+  color: #999;
+  font-style: italic;
+  text-align: center;
+  max-width: 100%;
+  margin: 8px auto;
+  padding: 4px;
+  font-size: 0.9em;
+  align-self: center;
+}
+
+.system-message .message-header {
+  display: none;
+}
+
+.system-message .message-content {
+  color: #999;
+  font-size: 0.9em;
+}
+
+.system-message .message-content {
+  position: relative;
+  display: inline-block;
+  padding: 0 15px;
+}
+
+.system-message .message-content::before,
+.system-message .message-content::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  width: 30px;
+  height: 1px;
+  background: #eee;
+}
+
+.system-message .message-content::before {
+  right: 100%;
+}
+
+.system-message .message-content::after {
+  left: 100%;
+}
+
+.message-image {
+  max-width: 100%;
+  max-height: 300px;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: transform 0.2s;
+  object-fit: contain;
+  display: block;
+}
+
+.message-image:hover {
+  transform: scale(1.02);
+}
+
+/* antd Image 预览样式覆盖 */
+.ant-image-preview-mask {
+  background-color: rgba(0, 0, 0, 0.85);
+}
+
+.message-image-mask:hover {
+  transform: none;
+}
+
+.upload-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 40px;
+  height: 40px;
+  padding: 0;
+  background-color: #f0f0f0;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.upload-button:hover {
+  background-color: #e0e0e0;
+}
+
+.message.own-message .message-image {
+  margin-left: 0;
+}
+
+/* 未读消息数样式 */
+.ant-badge .ant-badge-count {
+  background: #ff4d4f;
+  box-shadow: none;
+  padding: 0 6px;
+  height: 18px;
+  line-height: 18px;
+  border-radius: 9px;
+  min-width: 18px;
+  font-size: 12px;
+  font-weight: normal;
+}
+
+.unread-dot {
+  display: inline-block;
+  width: 8px;
+  height: 8px;
+  background-color: #ff4d4f;
+  border-radius: 50%;
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+.session-name {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* 图片容器样式 */
+.ant-image {
+  display: block;
+}
+
+.ant-image-img {
+  object-fit: contain;
+  vertical-align: middle;
+}
+
+/* 图片预览样式 */
+.ant-image-preview-img {
+  object-fit: contain;
+}
