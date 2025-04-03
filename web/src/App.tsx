@@ -255,7 +255,9 @@ function App() {
   // 在消息渲染部分修改头像渲染函数
   const renderUserAvatar = (username: string) => {
     const animal = getAnimalFromUsername(username);
-    const IconComponent = animalIcons[animal];
+    const IconComponent: React.ReactNode | any = animalIcons[animal];
+    if (!IconComponent) return <Avatar />;
+
     return (
       <Avatar
         icon={<IconComponent />}
